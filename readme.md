@@ -8,6 +8,7 @@ Discord is a multiplatform chat client. This guide will specifically cover the u
 - [NVDA on Github](https://github.com/nvaccess/nvda)
 - [Discord app](https://discord.com/)
 - [Discord hotkeys list](https://support.discord.com/hc/en-us/articles/225977308--Windows-Discord-Hotkeys)
+- [Discord Accessibility Resources](https://discord.com/accessibility)
 ## Prerequisites
 - You are running Windows 10 or 11
 - You are running NVDA and know how to use it
