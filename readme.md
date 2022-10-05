@@ -5,14 +5,17 @@ Discord is a multiplatform chat client. This guide will specifically cover the u
 ## Useful Resources
 - [NVDA screen reader](https://www.nvaccess.org/)
 - [NVDA user guide](https://www.nvaccess.org/files/nvda/documentation/userGuide.html?)
+- [NVDA on Github](https://github.com/nvaccess/nvda)
 - [Discord app](https://discord.com/)
-- [Discord hotkeys](https://support.discord.com/hc/en-us/articles/225977308--Windows-Discord-Hotkeys)
+- [Discord hotkeys list](https://support.discord.com/hc/en-us/articles/225977308--Windows-Discord-Hotkeys)
 ## Prerequisites
 - You are running Windows 10 or 11
 - You are running NVDA and know how to use it
 - You have downloaded and installed [Discord For Windows](https://discord.com/api/downloads/distributions/app/installers/latest?channel=stable&platform=win&arch=x86)
 ## Note for non-NVDA users
 If you are using a different screen reader, such as JAWS or Dolphin, interface navigation will be largely the same since Discord is a web app, however you will need to use the navigation style specific to your screen reader. This includes the equivalents to web-element navigation and browse/focus mode for interacting with tree views and text fields.
+## Accessing Discord on The Web
+If you do not wish to download or cannot download the desktop client, you may access the browser client via [discord.com](https://discord.com/) and press the button, "open Discord in your web browser". The client will behave largely the same, however performance may be impacted and some features may not be available due to web browser permissions and limitations.
 
 ## Getting Started
 Once you launch Discord, you'll be presented with a login screen. If you do not have an account, you can create one here. There are no major accessibility hurdles here, and NVDA functions as expected.
