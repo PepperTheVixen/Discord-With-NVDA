@@ -1,53 +1,324 @@
 # Using Discord on Windows with NVDA
 
+**NOTICE:** This guide was last updated on`2025-12-26`.
+
 ## Introduction
-Discord is a multiplatform chat client. This guide will specifically cover the use of the Discord desktop client on Windows with the NVDA screen reader.
+
+Discord is a multiplatform chat client built in Electron and navigated with web navigation commands. This guide is written specifically for the Discord desktop client on Windows, however the knowledge can apply to the Discord desktop clients on other operating systems as well as Discord on the web.
+This guide will attempt to be as comprehensive as possible when describing the desktop client interface so that a blind screen reader user from a broad range of skill levels may benefit from the information.
+The purpose of this guide is not to teach you how to use NVDA or any other screen reader, however NVDA-specific instructions will be provided when necessary, such as for working around interface quirks and bypassing usability pitfalls.
+
+### Corrections, Contributions, & Suggestions
+
+These docs are currently maintained by a single volunteer. They try their best, but they will probably make a few mistakes or forget a feature here and there.
+If you've spotted a mistake, typo, or inaccuracy, please feel free to report it by submitting an [issue](https://github.com/PepperTheVixen/Discord-With-NVDA/issues).
+
+Want to contribute to the docs? Maybe add instructions for other screen readers or mention quirks specific to the web app? Submit a [pull request](https://github.com/PepperTheVixen/Discord-With-NVDA/pulls)!
+
+### Prerequisites & Assumptions
+
+- You are running Windows 10 or 11
+- You are running NVDA and know how to use it
+- You have downloaded, installed, and launched Discord for Windows
+
+### Guide Terminology
+
+- Landmark: an accessibility landmark present within the Discord interface.
+- State: referring to the status of the app as a whole or parts of the app such as, focused server, focused channel, voice channel, microphone status, etc.
+- Persistent: describing an interface element that will not change its title and will not change its values significantly regardless on current application state.
+- Dynamic: describing an interface element  that may change its title or values significantly based on current application state.
+- Fixed: describing a major section of the interface that will not move or disappear.
+- Ephemeral: describing a major section of the interface which may move or disappear completely.
+
 ## Useful Resources
+
 - [NVDA screen reader](https://www.nvaccess.org/)
 - [NVDA user guide](https://www.nvaccess.org/files/nvda/documentation/userGuide.html?)
-- [NVDA on Github](https://github.com/nvaccess/nvda)
+- [NVDA on GitHub](https://github.com/nvaccess/nvda)
 - [Discord app](https://discord.com/)
 - [Discord hotkeys list](https://support.discord.com/hc/en-us/articles/225977308--Windows-Discord-Hotkeys)
 - [Discord Accessibility Resources](https://discord.com/accessibility)
-## Prerequisites
-- You are running Windows 10 or 11
-- You are running NVDA and know how to use it
-- You have downloaded and installed [Discord For Windows](https://discord.com/api/downloads/distributions/app/installers/latest?channel=stable&platform=win&arch=x86)
-## Note for non-NVDA users
-If you are using a different screen reader, such as JAWS or Dolphin, interface navigation will be largely the same since Discord is a web app, however you will need to use the navigation style specific to your screen reader. This includes the equivalents to web-element navigation and browse/focus mode for interacting with tree views and text fields.
-## Accessing Discord on The Web
-If you do not wish to download or cannot download the desktop client, you may access the browser client via [discord.com](https://discord.com/) and press the button, "open Discord in your web browser". The client will behave largely the same, however performance may be impacted and some features may not be available due to web browser permissions and limitations.
 
-## Getting Started
-Once you launch Discord, you'll be presented with a login screen. If you do not have an account, you can create one here. There are no major accessibility hurdles here, and NVDA functions as expected.
-After signing up, you can begin to use Discord.
-## Interface
-Discord is built in Electron and functions like a website. This means you can use web navigation throughout the desktop client.
-The interface is divided into 6 distinct sections: server sidebar, user/channel list, user area, the channel header, channel area, and the members list. All of these sections can be reached via landmark navigation, however not all of them may be present at once, depending on the active context.
-### Server Sidebar
-This is the first landmark available. It is a tree view which contains all of the servers you are currently a member of. To navigate this sidebar, activate focus mode and move up and down. NVDA may start focused at the bottom. To resolve this, press home while in focus mode to move to the "direct messages" at the top of the list. You will find options to create a server or browse public servers at the bottom of the list.
-You can open the context menu for various server options by moving to the desired server in the list and pressing the applications key or shift+f10. To select a server, move to the desired server and press enter. You may then exit focus mode.
-### Private Channels/Server Channels
-This is the second landmark available in the client. It is context-sensitive to the option you selected in the server sidebar and will either display your private messages or the channels you have viewing permissions for in a selected server.
+## Login Interface
+
+The login screen includes a a series of labeled edit fields and buttons for the most important elements.
+
+- email or phone number: edit field
+- password: secure edit field
+- forgot your password: button
+- log in: button
+- register: button
+- log in with QR code: level 2 heading
+- or sign in with passkey: button
+
+## Main Interface
+
+The main interface is divided into 6 distinct sections. All of these sections can be reached via landmark navigation, however not all of them may be present at once.
+Despite the fact that the landmarks being described will change name, and change role in some narrow cases, it's helpful to imagine 6 distinct sections and form spatial relationships between them.
+Visually, Discord is organized into 3 or 4 columns that span the width of the app. The columns are of varying widths and leave the most space for the main content area down the center of the app. From left to right, they are: servers sidebar, user/channel list, channel area, and members list.
+There are 3 exceptions to the column layout: the user area takes up a small portion of the user/channel list column at the bottom, the channel header occupies the uppermost portion of the channel area, and the member list will display multiple landmarks when viewing a profile.
+
+Quickly jump to a specific interface section.
+
+- [servers sidebar](#servers-sidebar)
+- [user/channel list](#channel-list)
+- [user area](#user-area)
+- [channel header](#channel-header)
+- [channel area](#channel-area)
+- [members list](#members-list)
+
+### Servers Sidebar
+
+Persistent, Fixed: contents will not change often, and the landmark will not disappear from the main interface.
+
+This landmark is the first you will encounter in the client. It is a tree view that allows you to switch between servers and direct messages. Starting from the top of the tree view, you will find:
+
+- Direct Messages (level 1, persistent)
+  - Shows all direct messages in the channel list
+  - see [Private Channels](#private-channels) for more info
+- Direct messages grouping (level 2, dynamic, ephemeral)
+  - appears for messages that you haven't read
+  - changes often based on incoming messages
+- Servers Grouping (level 1, persistent)
+  - displays all servers you are part of
+  - will change in length as you join and leave servers
+  - see [Server Channels](#server-channels) for more info
+- Add a Server (level 1, persistent)
+  - opens a modal that allows you to create your own server
+- Discover (level 1, persistent)
+  - shows options for discovering servers, apps, and other Discord features in the channel list
+  - see [Discover](#discover) for more info
+
+### Channel List
+
+Dynamic, Fixed: The title of this landmark and its contents will change frequently based on app state, but the landmark will not disappear from the main interface.
+
+This is the second landmark in the client. When viewing direct messages, it will be titled "direct messages". When viewing a server, the landmark will bear the same name as the server title.
+
 #### Private Channels
-If you have selected "direct messages" in the server sidebar, you will see a list of actie private conversations in this region. When you first move to this landmark, NVDA will be focused on "button start or find a private conversation". This button will open the quick switcher which will be explained later.
-Below this button, NVDA will announce a list which begins with two links. "Friends" will open a view of all your friends. This region is not a landmark and will be discussed later. The next item is a link labelled "Nitro". This will open information about Discord Nitro. This content is not a landmark. If you wish to read it, navigate to the next level 3 heading within Discord after activating the link, otherwise you can safely ignore it.
-Afterward, you will find a level 2 heading, "Direct Messages" immediately followed by a "create DM" button. This button opens a menu that allows you to make a new private channel with up to 9 participants. It will be discussed later. Below this button, the list will continue if you have any private channels. You can navigate these either by link or list item. They will read "<username>, direct message, link". Press enter on the desired username to open its corresponding private channel.
-#### Server Channels
-If you have selected a server in the server sidebar, you will instead see a list of all the channels in the selected server that you have access to. This area can be most easily navigated with button, list item, and link navigation.
-The name of this landmark is dependent on the name of the server. The first element encountered is an unlabeled button. This button is for server-boosting whic requires a Nitro subscription. If you activate it, you will be put into another region telling you the benefits of Nitro. You can close this content by pressing escape, however it will place you in the members list landmark. Move back to the server channels landmark.
-Next in the area is a level 1 heading with the server name followed by a collapsed button that lets you perform various server actions. Many of these are the same as the actions you can perform in the context menu in the server sidebar. These options may change depending on your server permissions. Below this is yet another button for buying server boosts. This one, however, is labeled. NVDA also likely announced a list with several items. This button is not part of the list.
-Below this, you will encounter categories, text channels, and voice channels. These channels can vary wildly from server to server. The names may include text, emojis, or both. Categories and voice channels with no users are buttons. Text channels and voice channels with users present are links. All of these are items in the channels list.
-A voice channel with users present will appear as a link, rather than a btton, and will display the names of the users currently in the channel below it. These users will appear as buttons. Each name may include a word such as "live", "muted", or "deafened" appended to their name. These signify that they are either streaming video to that channel, muted and unable to speak, or deafened and unable to hear or sspeak. These options can be controlled locally by the user or by a user with adminstrative permissions.
-A text channel with messages that you have not read will include "unread" appended to its name. A text channel in which another user has mentioned you or a server group you are in will have a number corresponding to the number of unread mentions appended to its name. Categories can be collapsed or expanded to make navigation through the list easier.
-### User Area
-This landmark contains controls for your status, microphone, and speakers. The first element is a collapsed button "set status". This will open a new region and move focus to it automatically (discussed below). This is followed by checkboxes to mute and deafen your client, and a button to open user settings. When you are in a voice channel, several new elements will be present in the user area.
-#### User Area When Connected to Voice
-When you are connected to a voice channel, the first element will be text reading out your connection latency. Next is a "voice connected" button. This will open content at the bottom of the client. It will not be announced in any way. This new content shows information about the server the voice channel is running on, latency, and packet loss as well as a button for debugging. This guide will not cover debugging. Next is a link showing which server and voice channel you are connected to. Pressing the link will open expanded channel controls past the user controls landmark.
-Below that is a button labeled "noise suppression powered by crisp". Pressing this will move screen reader focus to a checkbox that will toggle noise suppression for your microphone. To exit this content, press escape. Screen reader focus will remain at the bottom of the client, so you must return to the user area landmark.
-Next is the disconnect button which disconnects you from the active voice channel. Next is a button labeled "turn on your camera"which will toggle your computer's camera. Next is a "share your screen button" which opens a new menu. This will be discussed later. After that is the "start an activity" button. It opens a menu which will be discussed later.
 
-#### Set Status Menu
-In this menu, you will encounter a button with your full username that allows you to view your profile, an "edit profile button", a button "click to copy username" which does what it says (this is helpful when you want to share your username), a level 3 heading for your "about me", a level 3 heading that shows your account's age, a separator, and then finally a submenu which allows you to change your status between "online", "idle", "do not disturb", and "invisible".
-Below this, you will encounter a menu item to set a custom status. This will move focus to an edit field that lets you add a status of your choice, how long it should take to clear, and a corresponding online/idle/DnD/invisible status, followed by a button to save your custom status.
-At the very bottom, you will find an item that allows you to switch accounts. Once you finish changing your status, you can press escape to close the menu. This will deposit you all the way at the bottom of the client, and you must move back to the user status region.
+Private channels (direct messages) will be displayed here if you have selected "Direct Messages in the [servers sidebar](#servers-sidebar).
+
+You will encounter a button labeled "Find or start a conversation" which opens the quick switcher.
+Following this is a list that can be navigated in browse or focus mode that will display pending friend requests and conversation requests (if any) as well as all of your direct messages and groups. The context menu is available for all chats in this list.
+
+#### Server Channels
+
+All the categories and channels available to you in a specific server will be displayed here after selecting a server from the [servers sidebar](#servers-sidebar).
+You will first encounter 2 buttons:
+
+1. Server Actions. This opens a menu for making changes to the current server. Options can be navigated in focus mode and will changed based on your server permissions
+2. Invite to Server. This button appears as unlabeled to NVDA. It will open a modal that may allow you to invite other people to the current server depending on your permissions
+
+After these buttons, you will encounter a level 2 heading labeled "Channels". Below this heading is a list holding all server channels and categories.
+
+The list of channels can be navigated in browse mode or focus mode. This list is highly dynamic and you should expect each server to organize its contents differently. Many servers also reorganize and rename channels from time to time, so it's important to be familiar with the underlying navigation patterns rather than memorizing one specific server channel layout.
+The first two items in the list, "events" and "browse channels", will show server events and allow you to customize which channels are shown, respectively.
+
+This table gives an overview of each channel type.
+
+| Name | type | purpose | Important Notes |
+| --- | --- | --- | --- |
+| category | button | divides channels into organizational units | collapsing does not work properly with NVDA |
+| text channel | link | a typical channel with text communication | most common channel type |
+| voice channel | button | a voice chat | When connected, appears as link, displays connected users as buttons in channel list |
+| thread | button | a text chat that has branched off of a text channel | appears directly below associated channel |
+| forum | link | a channel with many separate threads | hard to distinguish from text channels |
+
+##### Categories
+
+To keep servers organized, owners can group all of their channels into common categories; some may organize by channel type while others organize by channel purpose. It is common to encounter a mixture of both.
+Categories appear to NVDA as buttons. This makes it very easy to browse channel categories on a well-organized server and only move through individual channels when you find the desired category.
+While categories are collapsible, the effect only functions with NVDA some of the time.
+Within a category, you will encounter a mixture of text channels, threads, forum channels, and voice channels. The first 3 channel types appear as links, and voice channels appear as buttons.
+
+##### Text Channels
+
+Text channels are by far the most common type of channel in Discord. When selected, they will display the channel info and contents in the [channel header](#channel-header) and the [channel area](#channel-area).
+These channels present text and other media as linear conversations like other chat apps.
+Text channels with unread messages will have "(unread)" appended to their name in the channel list. If a user mentions you in a text channel, a count will be appended to the channel name. This number corresponds to the amount of times you have been mentioned in that channel.
+Check the section on [navigating text channels](#navigating-text-channels) for more info.
+
+##### Voice Channels
+
+When you join a voice channel, it will appear as a button instead of a link in the channels list. The users in the voice channel will be added to the list and appear as buttons for as long as you remain connected.
+When these users are displayed in the channels list, their names will include extra words and buttons based on activity, server badge, and microphone state.
+While you are focused on a voice channel, regardless of connection state, the channel header and channel area will disappear from the main interface.
+Check the section on [navigating voice channels](#navigating-voice-channels) for more info.
+
+##### Threads
+
+A thread is a self-contained conversation that can be found in text channels and forum channels.
+Threads that are part of text channels may show up as buttons directly after the channel link and will show the conversation info and contents in the [channel header](#channel-header) and the [channel area](#channel-area) when selected.
+Check the section on [navigating threads and forums](#navigating-forums--threads) for more info.
+
+##### Forums
+
+Forums are indistinguishable from text channels unless they are explicitly identified as forums in their channel name. Currently, even the [channel header](#channel-header) identifies a forum as a text channel.
+When selected, the [channel area](#channel-area) is temporarily replaced by a view of all threads within the forum.
+Check the section on [navigating threads and forums](#navigating-forums--threads) for more info.
+
+#### Discover
+
+<!-- todo: discover -->
+
+### User Area
+
+Persistent, Fixed: Contents will not update dramatically, and frequent value updates only occur in some app states. This landmark will not disappear from the main interface.
+
+This landmark provides information about your active user account, connected voice channel, and toggles for frequently-used settings.
+
+- Set Status
+  - opens a dialogue for configuring your current activity status
+  - see [Set Status Menu](#set-status-menu) for more info
+- mute switch
+  - toggles whether or not your selected audio input device can be heard in a voice chat
+- input options
+  - opens a menu to select and configure the active microphone
+  - see [input options](#input-options-menu) for more info
+- deafen switch
+  - toggles whether or not you can hear a voice chat through your selected audio output device
+- output options
+  - opens a menu to select and configure the active listening device
+  - see [output options](#output-options-menu) for more info
+- User Settings
+  - appears as an unlabeled button with its label directly following it
+  - opens the user settings dialogue
+  - see [user settings](#user-settings-dialogue) for more info
+
+#### When Connected to Voice
+
+When you are connected to a voice channel, the user area will display additional relevant content and options at the top of the landmark:
+
+- a button displaying your current ping
+  - may appear unlabeled if no ping is being reported
+  - will announce ping as a number (example: "12 ms")
+  - toggles additional details about your connection to the voice channel at the bottom of the main interface (synced with voice details toggle)
+- voice details button
+  - may have an additional label such as "Voice Details Voice Connected"
+  - toggles additional details about your connection to the voice channel at the bottom of the main interface (synced with ping button)
+- noise suppression control
+  - may appear unlabeled with its label immediately following it in some app states
+  - opens a menu that allows you to toggle Discord's built-in noise suppression
+    - the menu is located at the bottom of the main interface
+    - pressing escape closes the menu but does not return focus to the user area
+- disconnect button
+  - may appear unlabeled with its label immediately following it in some app states
+  - immediately disconnects you from the current voice channel
+- camera button
+  - may appear unlabeled with its label immediately following it in some app states
+  - toggles your selected webcam on or off
+  - while the button is marked as collapsed, there doesn't appear a to be a way to expand it
+- screen-share button
+  - may appear unlabeled with its label immediately following it in some app states
+  - opens the screen-sharing dialogue
+  - see the [share your screen dialogue](#share-your-screen-dialogue) for more info
+- activities button
+  - may appear unlabeled with its label immediately following it in some app states
+  <!-- todo: add more brief notes -->
+  - see the [activities dialogue](#activities-dialogue) for more info
+- soundboard button
+  - may appear unlabeled with its label immediately following it in some app states
+  - opens the soundboard dialogue for playing soundbites in in the connected voice channel
+  - see the [soundboard dialogue](#soundboard-dialogue) for more info
+
+### Channel Header
+
+Dynamic, Fixed: Contents will update frequently based on app state, but the landmark will not disappear from the main interface.
+
+<!-- todo: channel header -->
+
+### Channel Area
+
+Dynamic, Ephemeral: expect the content title and content to change frequently as app state changes and messages are posted and edited in channels. This landmark may also disappear under specific app states, such as when viewing a [forum](#forums).
+
+<!-- todo: channel area -->
+
+### Members List
+
+Dynamic, Ephemeral: Expect the information here to update frequently and significantly based on app state and user activity. This landmark can be hidden manually.
+
+<!-- todo: members list -->
+
+#### When Viewing a Direct Message
+
+<!-- todo: DM profile -->
+
+## Navigating within channels
+
+<!-- todo: section intro -->
+
+### Navigating Text Channels
+
+<!-- todo: navigating text channels -->
+
+### Navigating Voice Channels
+
+<!-- todo: navigating voice channels -->
+
+### Navigating Forums & Threads
+
+<!-- todo: forums and threads -->
+
+## Other Major Interface Elements
+
+<!-- todo: other-interfaces intro and navigation -->
+
+### Activities Dialogue
+
+<!-- todo: activities -->
+
+### Input Options Menu
+
+<!-- todo: input options menu -->
+
+### Output Options Menu
+
+<!-- todo: output options menu -->
+
+### Share Your Screen Dialogue
+
+<!-- todo: share your screen dialogue -->
+
+### Soundboard Dialogue
+
+<!-- todo: soundboard -->
+
+### Set Status Menu
+
+Context: [user area](#user-area)
+
+After opening this menu, your focus will move to a new area which contains options for setting your active account's activity status. The options will be split into two lists for easier navigation.
+
+The first series of options contain shortcuts to your profile as well as custom status options:
+
+- profile graphic button
+  It will use your username and current status as its name
+  - opens your Discord profile in a new dialogue
+- custom status button
+  - opens a dialogue to set custom text as your activity status
+- another profile button
+  - opens your full profile
+- your display name
+- "copy username" button
+  - copies your username (and not your display name)
+- yet another profile button
+  - takes you to your full profile
+- profile information...
+  - these are several elements including your username, pronouns, and the "about me" section
+
+The next series of elements allow you to edit your profile, set your status, and switch accounts
+
+- edit profile button
+  - opens a dialogue to edit your profile info
+- "Your Status" button
+  - opens a menu for choosing preset activity statuses
+    - navigating this submenu is easiest in focus mode
+- "switchSwitch Accounts" button
+  - opens a dialogue that allows you to switch between multiple accounts, if you have more than one, and add a new account to switch between
+- "More Info" button
+  - appears to open the same dialogue as above
+
+### User Settings Dialogue
+
+<!-- todo: user settings -->
