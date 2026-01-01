@@ -1,6 +1,6 @@
 # Using Discord on Windows with NVDA
 
-**NOTICE:** This guide was last updated on`2025-12-26`.
+**NOTICE:** This guide was last updated on`2026-01-01`.
 
 ## Introduction
 
@@ -226,19 +226,25 @@ When you are connected to a voice channel, the user area will display additional
 
 Dynamic, Fixed: Contents will update frequently based on app state, but the landmark will not disappear from the main interface.
 
-<!-- todo: channel header -->
-
+The channel header provides information about the focused channel. For text channels, this includes the channel name, description, notification and member display settings, and a search input field.
+<!-- todo: expand this section -->
 ### Channel Area
 
 Dynamic, Ephemeral: expect the content title and content to change frequently as app state changes and messages are posted and edited in channels. This landmark may also disappear under specific app states, such as when viewing a [forum](#forums).
 
-<!-- todo: channel area -->
+This area contains the main content of the focused channel: messages in a text channel, threads in a forum, and connected users in a voice channel.
+
+- [navigating text channels](#navigating-text-channels)
+- [navigating voice channels](#navigating-voice-channels)
+- [navigating forums and threads](#navigating-forums--threads)
 
 ### Members List
 
 Dynamic, Ephemeral: Expect the information here to update frequently and significantly based on app state and user activity. This landmark can be hidden manually.
 
-<!-- todo: members list -->
+When focused on a server, this landmark will show all members who have access to the focused channel.
+It can be hidden and unhidden manually using `ctrl + u`.
+Users can be navigated as a list, however users may be arranged differently based on server configuration. A server may divide users into several ranks or only use one or two. Each rank is represented by a level 3 heading in the users list.
 
 #### When Viewing a Direct Message
 
@@ -246,7 +252,7 @@ Dynamic, Ephemeral: Expect the information here to update frequently and signifi
 
 ## Navigating within channels
 
-<!-- todo: section intro -->
+Each channel type will require different navigation strategies. Below are sections on the major channel types
 
 ### Navigating Text Channels
 
@@ -262,7 +268,7 @@ Dynamic, Ephemeral: Expect the information here to update frequently and signifi
 
 ## Other Major Interface Elements
 
-<!-- todo: other-interfaces intro and navigation -->
+Below are a collection of interface elements that are not part of the main interface but are still import to understand.
 
 ### Activities Dialogue
 
