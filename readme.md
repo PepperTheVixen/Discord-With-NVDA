@@ -202,6 +202,7 @@ When you are connected to a voice channel, the user area will display additional
   - opens a menu that allows you to toggle Discord's built-in noise suppression
     - the menu is located at the bottom of the main interface
     - pressing escape closes the menu but does not return focus to the user area
+    - navigate by previous landmarks to return to the the user area
 - disconnect button
   - may appear unlabeled with its label immediately following it in some app states
   - immediately disconnects you from the current voice channel
@@ -228,6 +229,7 @@ Dynamic, Fixed: Contents will update frequently based on app state, but the land
 
 The channel header provides information about the focused channel. For text channels, this includes the channel name, description, notification and member display settings, and a search input field.
 <!-- todo: expand this section -->
+
 ### Channel Area
 
 Dynamic, Ephemeral: expect the content title and content to change frequently as app state changes and messages are posted and edited in channels. This landmark may also disappear under specific app states, such as when viewing a [forum](#forums).
@@ -248,7 +250,31 @@ Users can be navigated as a list, however users may be arranged differently base
 
 #### When Viewing a Direct Message
 
-<!-- todo: DM profile -->
+If the landmark is on screen, it will instead become a series of landmarks displaying the profile of the user you are having a conversation with.
+
+- User's Profile
+  - displays the user's profile, including, name, avatar, status, common servers, and more
+- Current Activity
+  - displays what the user is currently doing, such as which voice channel they are in
+  - may offer the ability to join them if you have the correct permissions
+  - may show multiple names if they are in an activity with multiple users
+- About me (2 Landmarks)
+  - "About Me " h4 in one region immediately followed by a "About Me" h4 in the next land,ark
+  - displays the user's description
+-Member Since
+  - shows when the user first joined Discord
+
+There are some items which are part of the profile but are positioned after the final landmark.
+
+- Mutual Servers
+  - shows which servers you and the user are both in
+  - is presented as a list, but cannot be navigated via list item with NVDA
+  - can be navigated via buttons
+- Mutual Friends
+  - shows other users that are both friends of you and the focused user
+  - is presented as a list, but cannot be navigated via list item with NVDA
+  - can be navigated via buttons
+- View Full Profile
 
 ## Navigating within channels
 
