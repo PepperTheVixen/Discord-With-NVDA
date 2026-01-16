@@ -284,6 +284,10 @@ There are some items which are part of the profile but are positioned after the 
   - is presented as a list, but cannot be navigated via list item with NVDA
   - can be navigated via buttons
 - View Full Profile
+  - opens a larger view of the same profile information.
+  - It can be dismissed by pressing `esc`
+
+There are several clickable elements after these two buttons, but I'm unable to determine what they do.
 
 ## Navigating within channels
 
