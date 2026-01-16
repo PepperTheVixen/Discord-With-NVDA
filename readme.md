@@ -1,12 +1,21 @@
 # Using Discord on Windows with NVDA
 
-**NOTICE:** This guide was last updated on`2026-01-01`.
+**NOTICE:** This guide was last updated on`2026-01-15`.
 
 ## Introduction
 
 Discord is a multiplatform chat client built in Electron and navigated with web navigation commands. This guide is written specifically for the Discord desktop client on Windows, however the knowledge can apply to the Discord desktop clients on other operating systems as well as Discord on the web.
 This guide will attempt to be as comprehensive as possible when describing the desktop client interface so that a blind screen reader user from a broad range of skill levels may benefit from the information.
 The purpose of this guide is not to teach you how to use NVDA or any other screen reader, however NVDA-specific instructions will be provided when necessary, such as for working around interface quirks and bypassing usability pitfalls.
+
+## License
+
+Copyright (C)  2016  Jenna Pepper (@PepperTheVixen).
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+A copy of the license is included in the project file entitled "[license](./license)".
 
 ### Corrections, Contributions, & Suggestions
 
