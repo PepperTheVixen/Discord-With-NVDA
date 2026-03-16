@@ -1,6 +1,6 @@
 # Using Discord on Windows with NVDA
 
-**NOTICE:** This guide was last updated on`2026-01-15`.
+**NOTICE:** This guide was last updated on`2026-03-15`.
 
 ## Introduction
 
@@ -10,7 +10,7 @@ The purpose of this guide is not to teach you how to use NVDA or any other scree
 
 ## License
 
-Copyright (C)  2016  Jenna Pepper (@PepperTheVixen).
+Copyright (C)  2026  Jenna Pepper (@PepperTheVixen).
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
 or any later version published by the Free Software Foundation;
@@ -138,7 +138,7 @@ This table gives an overview of each channel type.
 
 To keep servers organized, owners can group all of their channels into common categories; some may organize by channel type while others organize by channel purpose. It is common to encounter a mixture of both.
 Categories appear to NVDA as buttons. This makes it very easy to browse channel categories on a well-organized server and only move through individual channels when you find the desired category.
-While categories are collapsible, the effect only functions with NVDA some of the time.
+While categories are collapsible, the collapsing effect only functions with NVDA some of the time. This means that channels will often still be visible to NVDA even if they are visually collapsed.
 Within a category, you will encounter a mixture of text channels, threads, forum channels, and voice channels. The first 3 channel types appear as links, and voice channels appear as buttons.
 
 ##### Text Channels
@@ -295,7 +295,16 @@ Each channel type will require different navigation strategies. Below are sectio
 
 ### Navigating Text Channels
 
-<!-- todo: navigating text channels -->
+Text channels are a series of multimedia messages, though they usually contain text and hyperlinks. Text channels have several important elements navigation:
+
+- heading
+  - h3
+  - each time a user sends a message, a level 3 heading showing their name appears above their messages
+  - a new heading will be created once a different user speaks or or if the same user speaks after a pause of several minutes or longer
+- list item
+  - this represents a single message
+  - includes timestamp, message
+  - may include username if it is the first message the user has sent
 
 ### Navigating Voice Channels
 
